@@ -42,3 +42,4 @@ After this, you can log into the Django admin panel at http://127.0.0.1:8000/adm
 python manage.py runserver
 
 
+### Update made by GiuranRaduTest - testing Pull Request
