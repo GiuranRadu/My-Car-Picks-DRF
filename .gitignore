@@ -29,3 +29,7 @@ db.sqlite3
 # OS
 .DS_Store
 Thumbs.db
+
+# Ignore Django migrations (for training only)
+**/migrations/*.py
+!**/migrations/__init__.py
