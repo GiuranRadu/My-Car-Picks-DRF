@@ -41,4 +41,4 @@ After this, you can log into the Django admin panel at http://127.0.0.1:8000/adm
 ### 6. Run the server
 python manage.py runserver
 
-
+ceva
