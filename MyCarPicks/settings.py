@@ -124,3 +124,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# In mod normal daca n ai pune aceasta linie django ar folosi automat modelul sau intern : django.contrib.auth.models.user
+# In cazul nostru user-ul principal al aplicatiei este declarat in 'accounts.CustomUser'
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
