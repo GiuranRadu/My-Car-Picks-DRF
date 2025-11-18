@@ -15,6 +15,16 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=10),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=15),
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "ALGORITHM": "HS256",
+    "AUTH_HEADER_TYPES": ("Bearer",),
+}
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -39,8 +49,23 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #aplicatii adaugate de mine
     'rest_framework',
-    'accounts'
+    'accounts',
+    'rest_framework_simplejwt.token_blacklist',
 ]
+
+# E un dictionar din seting.py unde setez comportamentul global(reguli care se aplica la toate view-ul)
+REST_FRAMEWORK = {
+    # Aici spui ce metodă de autentificare folosește API-ul tău.
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    # Aici setezi cine are voie să acceseze API-ul. IsAuthenticated → doar userii logați (cu token JWT valid) pot accesa rutele. 
+
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework.permissions.IsAuthenticated",   # implicit: totul cere login-> implicit este AllowAny
+    ),
+
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
