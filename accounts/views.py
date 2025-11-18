@@ -5,47 +5,38 @@ from django.contrib.auth import authenticate , login , logout
 from .serializers import RegisterSerializer
 # Create your views here.
 
+from rest_framework.permissions import  AllowAny, IsAuthenticated
 
-@api_view(['GET', 'POST'])
-def test(request):
-    if request.method == 'GET':
-        return Response('Salut , merge')
-    elif request.method == 'POST':
-        print(request.data['nume'])
-        return Response('Merge POST')
-
-@api_view(['POST'])
-def register_user(request):
-    s = RegisterSerializer(data=request.data)
-    if s.is_valid():
-        s.save()
-        return Response({"message" : f"{s.data}"}, status = 201)
-    return Response(s.errors, status=400)
-
-@api_view(['POST'])
-def login_user(request):
-    username = request.data.get('username')
-    password = request.data.get('password')
+@api_view(['GET','POST'])
+@permission_classes([IsAuthenticated])
+def home(request):
+    if request.method == "GET":
+        return  Response("Home")
+    elif request.method == "POST":
+        mesaj = request.data.get("mesaj")
+        return Response(f"Mesajul dumnevoastra a fost: <<<{mesaj}>>>" )
     
-    user = authenticate(username=username , password=password)  
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def register(request):
+    """
+    Endpoit pentru inregistrare user nou.
+    Primeste: username, email, password1, password2
+    """
     
-    if user is None:
+    data = request.data
+    serializer = RegisterSerializer(data = data)
+    if serializer.is_valid():
+        user = serializer.save()
         return Response({
-            "Error" : "invalid username or password",
-        } , status=400)
-    else:
-        login(request , user)
-        return Response({
-            "Message" : f'Welcome back {user.username}'
-        } , status=200)  
-
-@api_view(['POST'])  
-def logout_user(request):
-    if not request.user.is_authenticated:
-        return Response({
-            "Message" : "Nu esti logat"
-        }, status=401)
-    logout(request)  #Distruge sesiunea si sterge cookie - ul sessionID
-    return Response({
-        "Message" : "Logout realizat cu succes"
-    }, status=200)
+            "messaj":"cont creat cu succes",
+            "user": {
+                "id":user.id, # type: ignore
+                "username":user.username, # type: ignore
+                "email":user.email # type: ignore
+                }
+        }, status=201)
+        
+    return Response(serializer.errors, status=400)
+        
+    
