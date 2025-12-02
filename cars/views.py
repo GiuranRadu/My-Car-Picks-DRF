@@ -28,7 +28,7 @@ def create_car(request):
     
 
 @api_view(['GET'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def get_cars(request):
     cars = Car.objects.all()
     serializer = CarSerializer(cars, many=True)   
