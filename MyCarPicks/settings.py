@@ -18,8 +18,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 from datetime import timedelta
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=10),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=15),
+    "ACCESS_TOKEN_LIFETIME": timedelta(seconds=20),
+    "REFRESH_TOKEN_LIFETIME": timedelta(seconds=60),
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
     "ALGORITHM": "HS256",
@@ -51,14 +51,16 @@ INSTALLED_APPS = [
     'rest_framework',
     'accounts',
     'rest_framework_simplejwt.token_blacklist',
-    'cars'
+    'cars',
+    'corsheaders',
 ]
 
 # E un dictionar din seting.py unde setez comportamentul global(reguli care se aplica la toate view-ul)
 REST_FRAMEWORK = {
     # Aici spui ce metodă de autentificare folosește API-ul tău.
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication'
+        'accounts.authentication.CookieJWTAuthentication',
     ),
     # Aici setezi cine are voie să acceseze API-ul. IsAuthenticated → doar userii logați (cu token JWT valid) pot accesa rutele. 
 
@@ -76,6 +78,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'MyCarPicks.urls'
@@ -153,4 +156,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # In mod normal daca n ai pune aceasta linie django ar folosi automat modelul sau intern : django.contrib.auth.models.user
 # In cazul nostru user-ul principal al aplicatiei este declarat in 'accounts.CustomUser'
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = ['http://localhost:5173']
 
