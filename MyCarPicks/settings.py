@@ -18,8 +18,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 from datetime import timedelta
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(seconds=20),
-    "REFRESH_TOKEN_LIFETIME": timedelta(seconds=60),
+    "ACCESS_TOKEN_LIFETIME": timedelta(seconds=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(seconds=300),
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
     "ALGORITHM": "HS256",

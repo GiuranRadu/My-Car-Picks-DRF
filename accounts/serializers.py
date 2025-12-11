@@ -4,6 +4,8 @@ from rest_framework import serializers
 # importam functia care returneaza modelul de utilizator folosit in proiect
 from django.contrib.auth import get_user_model
 
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
 # get_user_model returneaza modelul de user activ in proiect, poate fi modelul default al django sau unul custom definit in settings.py prin AUTH_USER_MODEL
 
 User = get_user_model()
@@ -33,33 +35,33 @@ class RegisterSerializer(serializers.ModelSerializer):
         errors = {}
 
         # verificare parole
-        if data.get('password1') != data.get('password2'):
-            errors['password'] = "Parolele nu coincid"
+        if data.get("password1") != data.get("password2"):
+            errors["password"] = "Parolele nu coincid"
         # verificare first_name
-        if not data.get('first_name'):
+        if not data.get("first_name"):
             errors["first_name"] = "First name is mandatory"
-        if not data.get('last_name'):
+        if not data.get("last_name"):
             errors["last_name"] = "Last name is mandatory"
-            
+
         #  data am strans erori, le arunca toate odata
         if errors:
             raise serializers.ValidationError(errors)
-        
+
         # daca totul este ok, returnam data neschimbat
         return data
-    
-    
-    def create(self , validated_data):
-        password = validated_data.get('password1')
-        
+
+    def create(self, validated_data):
+        password = validated_data.get("password1")
+
         # Eliminam pass1 si 2 din dictionarul principal
-        validated_data.pop('password1' , None)
-        validated_data.pop('password2' , None)
-        
+        validated_data.pop("password1", None)
+        validated_data.pop("password2", None)
+
         # Creem userul cu metoda create_user() -> Aceasta metoda hash-ueste automat parola
-        user = User.objects.create_user(password=password , **validated_data)
-        
+        user = User.objects.create_user(password=password, **validated_data)
+
         return user
+
 
 #!Important
 # Serializers vine din biblioteca drf.
@@ -68,3 +70,28 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 
 # Ce face create_user() -> ea cheama intern set_password() -> aceasta hash-uieste folosint algoritmul SHA256
+
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    # Vezi TokenObtainPairSerializer -> TokenObtainSerializer -> getToken are decoratorul @classmethod.
+    # get_token() -> este o metoda legata de CLASA, nu de instanta -> de acea primeste param cls si nu self
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        token["is_staff"] = user.is_staff
+        token["lala"] = "lala-band"
+        return token
+
+    def validate(self, attrs):
+        data = super().validate(attrs)
+
+        
+        data["user"] = {
+            "id": self.user.id,
+            "email": self.user.email,
+            "username": self.user.username,
+            "first_name": self.user.first_name,
+            "last_name": self.user.last_name,
+        }
+
+        return data
