@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'cars',
     'corsheaders',
+    'reviews',
 ]
 
 # E un dictionar din seting.py unde setez comportamentul global(reguli care se aplica la toate view-ul)
