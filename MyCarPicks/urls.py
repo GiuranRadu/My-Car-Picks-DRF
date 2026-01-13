@@ -17,10 +17,21 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/accounts/", include("accounts.urls")),
     path("cars/", include("cars.urls")),
     path("reviews/", include("reviews.urls")),
+    # il adaugi aici
 ]
+
+# static() este un helper Django folosit doar in development -> static() este un fake Nginx , doar ca sa vezi rezultatul rapid. 
+from django.conf.urls.static import static
+
+
+# In development, Django va servi fisierere media (imagini/fisiere, etc) folosind serverul sau intern. Serveste media doar ca sa evitam configurarea un CDN (web server , cum ar fi Cloudfare sau Cloundinary)
+# In productie acest lucru se face cu Nginx / Apache / CDN, nu DJANGO. Django trebuie sa generele doar JSON. 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
