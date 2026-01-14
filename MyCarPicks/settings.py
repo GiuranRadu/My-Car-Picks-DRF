@@ -162,3 +162,9 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = ['http://localhost:5173']
 
+
+# Url public de baza pentru fisierele media (imagini, fisere csv/xml/xlsx). Va fi folosit in browser: ex http://127.0.0.1:8000/media/cars/1/img.jpg 
+MEDIA_URL = "/media/"
+
+# Calea fizica pe disk unde DJango salveaza fisierele media
+MEDIA_ROOT = BASE_DIR / "media"
