@@ -37,7 +37,7 @@ def upload_path(instance, filename):
 
 class CarImage(models.Model):
     car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name="images")
-    image = models.ImageField(upload_to=upload_path)
+    image = models.ImageField(upload_to=upload_path, null=True, blank=True)
     created_at = models.DateField(auto_now_add=True)
 
     def __str__(self):
