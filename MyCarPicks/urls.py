@@ -18,6 +18,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+from .views import home_view
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -25,6 +27,8 @@ urlpatterns = [
     path("cars/", include("cars.urls")),
     path("reviews/", include("reviews.urls")),
     # il adaugi aici
+    path("", home_view),  # 👈 HOME VIEW "/"
+
 ]
 
 # static() este un helper Django folosit doar in development -> static() este un fake Nginx , doar ca sa vezi rezultatul rapid. 

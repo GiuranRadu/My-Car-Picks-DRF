@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyCarPicks — Mașini care te reprezintă</title>
+</head>
+<body style="margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; background:#0b0f17; color:#eaf0ff;">
+
+  <!-- Page wrapper -->
+  <div style="min-height:100vh; display:flex; align-items:center; justify-content:center; padding:28px;">
+    <div style="width:100%; max-width:1040px;">
+
+      <!-- Hero card -->
+      <div style="
+        position:relative;
+        border-radius:28px;
+        overflow:hidden;
+        background:
+          radial-gradient(1200px 600px at 15% 20%, rgba(91,166,255,.22), transparent 60%),
+          radial-gradient(1000px 600px at 90% 25%, rgba(146,89,255,.20), transparent 55%),
+          linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+        border:1px solid rgba(255,255,255,.10);
+        box-shadow: 0 22px 60px rgba(0,0,0,.55);
+      ">
+
+        <!-- Subtle grid -->
+        <div style="
+          position:absolute; inset:0;
+          background-image:
+            linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+          background-size: 56px 56px;
+          opacity:.18;
+          pointer-events:none;
+        "></div>
+
+        <!-- Content -->
+        <div style="position:relative; padding:44px 40px 36px;">
+          <!-- Top badge -->
+          <div style="display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.10);">
+            <span style="display:inline-block; width:10px; height:10px; border-radius:999px; background:#59d37b; box-shadow:0 0 0 6px rgba(89,211,123,.12);"></span>
+            <span style="font-size:13px; letter-spacing:.25px; color:rgba(234,240,255,.85);">
+              Dealer premium • Test drive în 24h • Evaluare corectă
+            </span>
+          </div>
+
+          <!-- Headline -->
+          <h1 style="
+            margin:18px 0 10px;
+            font-size:48px;
+            line-height:1.05;
+            letter-spacing:-.8px;
+          ">
+            Mașini care arată bine.
+            <span style="
+              display:block;
+              margin-top:6px;
+              background: linear-gradient(90deg, #7bd3ff, #b99bff, #7bd3ff);
+              -webkit-background-clip:text;
+              background-clip:text;
+              color:transparent;
+            ">Și se simt și mai bine.</span>
+          </h1>
+
+          <p style="
+            margin:0 0 22px;
+            font-size:16.5px;
+            line-height:1.65;
+            color:rgba(234,240,255,.78);
+            max-width:720px;
+          ">
+            MyCarPicks selectează mașini verificate, cu istoric transparent și pregătite de drum.
+            Tu alegi stilul — noi ne ocupăm de detalii: verificare tehnică, acte, garanție și finanțare.
+          </p>
+
+          <!-- CTAs -->
+          <div style="display:flex; flex-wrap:wrap; gap:12px; margin:0 0 26px;">
+            <a href="#"
+               style="
+                 text-decoration:none;
+                 display:inline-flex; align-items:center; justify-content:center;
+                 padding:12px 16px;
+                 border-radius:14px;
+                 background:linear-gradient(180deg, rgba(123,211,255,.95), rgba(123,211,255,.72));
+                 color:#06101f;
+                 font-weight:700;
+                 box-shadow: 0 12px 28px rgba(123,211,255,.22);
+                 border:1px solid rgba(255,255,255,.18);
+               ">
+              Vezi oferta
+              <span style="margin-left:10px; font-weight:900;">→</span>
+            </a>
+
+            <a href="#"
+               style="
+                 text-decoration:none;
+                 display:inline-flex; align-items:center; justify-content:center;
+                 padding:12px 16px;
+                 border-radius:14px;
+                 background:rgba(255,255,255,.06);
+                 color:rgba(234,240,255,.92);
+                 font-weight:650;
+                 border:1px solid rgba(255,255,255,.12);
+               ">
+              Programează un test drive
+            </a>
+
+            <span style="
+              display:inline-flex; align-items:center;
+              padding:12px 14px;
+              border-radius:14px;
+              background:rgba(255,255,255,.03);
+              border:1px dashed rgba(255,255,255,.14);
+              color:rgba(234,240,255,.72);
+              font-size:14px;
+            ">
+              Răspundem în &lt; 15 minute
+            </span>
+          </div>
+
+          <!-- Features -->
+          <div style="
+            display:grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap:14px;
+          ">
+
+            <!-- Feature card 1 -->
+            <div style="
+              grid-column: span 4;
+              padding:16px 16px 14px;
+              border-radius:18px;
+              background:rgba(255,255,255,.05);
+              border:1px solid rgba(255,255,255,.10);
+            ">
+              <div style="display:flex; align-items:flex-start; gap:12px;">
+                <div style="
+                  width:40px; height:40px; border-radius:14px;
+                  background:rgba(123,211,255,.16);
+                  border:1px solid rgba(123,211,255,.25);
+                  display:flex; align-items:center; justify-content:center;
+                  color:#7bd3ff;
+                  font-weight:900;
+                ">✓</div>
+                <div>
+                  <div style="font-weight:800; letter-spacing:.2px;">Verificare 360°</div>
+                  <div style="margin-top:4px; color:rgba(234,240,255,.75); font-size:14px; line-height:1.5;">
+                    Caroserie, diagnoză, frâne, suspensie, test pe drum.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Feature card 2 -->
+            <div style="
+              grid-column: span 4;
+              padding:16px 16px 14px;
+              border-radius:18px;
+              background:rgba(255,255,255,.05);
+              border:1px solid rgba(255,255,255,.10);
+            ">
+              <div style="display:flex; align-items:flex-start; gap:12px;">
+                <div style="
+                  width:40px; height:40px; border-radius:14px;
+                  background:rgba(185,155,255,.16);
+                  border:1px solid rgba(185,155,255,.25);
+                  display:flex; align-items:center; justify-content:center;
+                  color:#b99bff;
+                  font-weight:900;
+                ">⚡</div>
+                <div>
+                  <div style="font-weight:800; letter-spacing:.2px;">Livrare rapidă</div>
+                  <div style="margin-top:4px; color:rgba(234,240,255,.75); font-size:14px; line-height:1.5;">
+                    Rezervare online, livrare la ușă în 24–48h.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Feature card 3 -->
+            <div style="
+              grid-column: span 4;
+              padding:16px 16px 14px;
+              border-radius:18px;
+              background:rgba(255,255,255,.05);
+              border:1px solid rgba(255,255,255,.10);
+            ">
+              <div style="display:flex; align-items:flex-start; gap:12px;">
+                <div style="
+                  width:40px; height:40px; border-radius:14px;
+                  background:rgba(89,211,123,.14);
+                  border:1px solid rgba(89,211,123,.22);
+                  display:flex; align-items:center; justify-content:center;
+                  color:#59d37b;
+                  font-weight:900;
+                ">★</div>
+                <div>
+                  <div style="font-weight:800; letter-spacing:.2px;">Garanție & suport</div>
+                  <div style="margin-top:4px; color:rgba(234,240,255,.75); font-size:14px; line-height:1.5;">
+                    Garanție extinsă + opțiuni de finanțare fără stres.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom note -->
+          <div style="
+            margin-top:22px;
+            padding-top:18px;
+            border-top:1px solid rgba(255,255,255,.10);
+            display:flex;
+            flex-wrap:wrap;
+            gap:14px;
+            align-items:center;
+            justify-content:space-between;
+          ">
+            <div style="color:rgba(234,240,255,.65); font-size:13px;">
+              © <span id="y"></span> MyCarPicks • Pagina demo (single section)
+            </div>
+            <div style="display:flex; gap:10px; align-items:center; color:rgba(234,240,255,.70); font-size:13px;">
+              <span style="display:inline-flex; align-items:center; gap:8px;">
+                <span style="width:8px; height:8px; border-radius:99px; background:#7bd3ff;"></span>
+                București
+              </span>
+              <span style="opacity:.35;">•</span>
+              <span style="display:inline-flex; align-items:center; gap:8px;">
+                <span style="width:8px; height:8px; border-radius:99px; background:#b99bff;"></span>
+                09:00–18:00
+              </span>
+              <span style="opacity:.35;">•</span>
+              <span style="display:inline-flex; align-items:center; gap:8px;">
+                <span style="width:8px; height:8px; border-radius:99px; background:#59d37b;"></span>
+                Consultanță gratuită
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Tiny helper spacing -->
+      <div style="height:18px;"></div>
+
+      <!-- Small secondary card -->
+      <div style="
+        display:flex;
+        flex-wrap:wrap;
+        gap:12px;
+        justify-content:space-between;
+        align-items:center;
+        padding:14px 16px;
+        border-radius:18px;
+        background:rgba(255,255,255,.04);
+        border:1px solid rgba(255,255,255,.10);
+      ">
+        <div style="color:rgba(234,240,255,.78); font-size:14px;">
+          Acest fisier este servit direct de DJANGO
+        </div>
+        <a href="#"
+           style="
+             text-decoration:none;
+             color:rgba(234,240,255,.92);
+             font-weight:700;
+             padding:10px 12px;
+             border-radius:14px;
+             border:1px solid rgba(255,255,255,.12);
+             background:rgba(255,255,255,.06);
+           ">
+          SSR
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
